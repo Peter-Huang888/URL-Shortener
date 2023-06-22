@@ -31,17 +31,21 @@ app.get('/', (req, res) => {
 })
 
 app.post('/result', (req, res) => {
-  const url = req.body.url
+  const url = req.body.url.trim('')
+  // if the user does not enter something, a prompt is given
   if (!url) {
-    return res.redirect('/')
+    const tr = true 
+    return res.render('index', { tr })
   }
   return URL.find()
     .lean()
     .then(webs => {
       const filtered = webs.filter(web => web.url === url)
+      // If the same URL is entered, the same shorten address is generated
       if (filtered.length) {
         const shorten = filtered[0].shorten
         return res.render('result', { shorten })
+      // If the different URL is entered, create a new shorten address
       } else {
         const shortener = require('./shortener')
         const shorten = shortener()
@@ -54,9 +58,9 @@ app.post('/result', (req, res) => {
 
 app.get('/:shortener', (req, res) => {
   const shortener = req.params.shortener
-  return URL.findOne({shorten: shortener})
+  return URL.findOne({ shorten: shortener })
     .lean()
-    .then( web => res.redirect(`${web.url}`))
+    .then(web => res.redirect(`${web.url}`))
 })
 
 app.listen(port, () => {
