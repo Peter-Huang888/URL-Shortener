@@ -2,8 +2,8 @@
 一個使用 Node.js + Express 打造的縮網址工具，使用者可以輸入網址，並且點擊按鈕產生縮網址連結
 
 ## Screen Photos - 傳案畫面
-![image](https://github.com/Peter-Huang888/RESTAURANT-LIST/blob/main/public/img/homePage.jpg)
-![image](https://github.com/Peter-Huang888/RESTAURANT-LIST/blob/main/public/img/restaurantInfo.jpg)
+![image]()
+![image]()
 
 ## Features - 產品功能
 1. 使用者可以得到一個縮網址連結
