@@ -5,6 +5,10 @@ const urlSchema = {
   url: {
     type: String,
     required: true
+  },
+  shorten: {
+    type: String,
+    required: true
   }
 }
 
