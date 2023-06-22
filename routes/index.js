@@ -22,7 +22,7 @@ router.post('/result', (req, res) => {
         return res.render('result', { shorten })
         // If the different URL is entered, create a new shorten address
       } else {
-        const shortener = require('./shortener')
+        const shortener = require('../public/javascripts/shortener')
         const shorten = shortener()
         URL.create({ url: url, shorten: shorten })
         return res.render('result', { shorten })
