@@ -43,7 +43,8 @@ app.post('/result', (req, res) => {
         const shorten = filtered[0].shorten
         return res.render('result', { shorten })
       } else {
-        const shorten = require('./shortener')
+        const shortener = require('./shortener')
+        const shorten = shortener()
         URL.create({ url: url, shorten: shorten })
         return res.render('result', { shorten })
       }
