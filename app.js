@@ -37,8 +37,8 @@ app.post('/result', (req, res) => {
   }
   return URL.find()
     .lean()
-    .then(urls => {
-      const filtered = urls.filter(item => item.url === url)
+    .then(webs => {
+      const filtered = webs.filter(web => web.url === url)
       if (filtered.length) {
         const shorten = filtered[0].shorten
         return res.render('result', { shorten })
@@ -49,6 +49,13 @@ app.post('/result', (req, res) => {
       }
     })
     .catch(err => console.log(err))
+})
+
+app.get('/:shortener', (req, res) => {
+  const shortener = req.params.shortener
+  return URL.findOne({shorten: shortener})
+    .lean()
+    .then( web => res.redirect(`${web.url}`))
 })
 
 app.listen(port, () => {
