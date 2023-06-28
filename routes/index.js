@@ -23,7 +23,7 @@ router.post('/result', (req, res) => {
         // If the different URL is entered, create a new shorten address
       } else {
         const shortener = require('../public/javascripts/shortener')
-        let shorten = "12456"
+        let shorten = shortener()
         // check if the generated shorten is in the database
         URL.find({ shorten: shorten })
           .lean()
