@@ -23,9 +23,23 @@ router.post('/result', (req, res) => {
         // If the different URL is entered, create a new shorten address
       } else {
         const shortener = require('../public/javascripts/shortener')
-        const shorten = shortener()
-        URL.create({ url: url, shorten: shorten })
-        return res.render('result', { shorten })
+        let shorten = "12456"
+        // check if the generated shorten is in the database
+        URL.find({ shorten: shorten })
+          .lean()
+          .then(shortens => {
+            let sameShorten = shortens.length !== 0 ? true : false
+            while (sameShorten) {
+              let aux = shortener()
+              if (aux !== shorten) {
+                sameShorten = false
+                shorten = aux
+              }
+            }
+            URL.create({ url: url, shorten: shorten })
+            return res.render('result', { shorten })
+          })
+          .catch(err => console.log(err))
       }
     })
     .catch(err => console.log(err))
