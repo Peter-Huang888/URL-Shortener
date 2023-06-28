@@ -9,8 +9,8 @@ router.post('/result', (req, res) => {
   const url = req.body.url.trim('')
   // if the user does not enter something, a prompt is given
   if (!url) {
-    const tr = true
-    return res.render('index', { tr })
+    const  emptyUrl= true
+    return res.render('index', { emptyUrl })
   }
   return URL.find()
     .lean()
