@@ -1,7 +1,7 @@
 {
   "name": "url-shortener",
   "version": "1.0.0",
-  "description": "",
+  "description": "一個使用 Node.js + Express 打造的縮網址工具，使用者可以輸入網址，並且點擊按鈕產生縮網址連結",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
